@@ -22,43 +22,51 @@
 
     <!-- tasks -->
 
-    <div class="d-flex justify-content-between p-3 mb-3 task-panel rounded" *ngFor="let task of allTasks ;let i = index" >
-      
+    <div
+      class="d-flex justify-content-between p-3 mb-3 task-panel rounded"
+      *ngFor="let task of allTasks; let i = index"
+    >
       <div>
-        <h6>{{task}}</h6>
+        <h6>{{ task }}</h6>
         <p>Due on Fri Aug 8</p>
       </div>
       <div class="task-clock">
         <img src="../assets/images/task_clock.png" alt="icn" />
       </div>
     </div>
-    
 
     <div class="add-task" *ngIf="addNewTaskone">
       <div class="close-btn">
-        <button type="button" class="close float-left" (click)="Close()" >&times;</button>
+        <button type="button" class="close float-left" (click)="Close()">
+          &times;
+        </button>
       </div>
       <div>
-        <textarea name="addTask" class="form-control" rows="5" id="comment" [(ngModel)]="newTask"></textarea>
+        <textarea b  
+          name="addTask"
+          class="form-control"
+          rows="5"
+          id="comment"
+          [(ngModel)]="newTask"
+        ></textarea>
       </div>
     </div>
     <div *ngIf="addNewTaskone">
-      <div  [ngClass]="{'add-icn2': addNewTaskone}">
-          <div class="text-center m-0" (click)="taskEntered()">
-            <img src="../assets/images/add_icn.png" alt="add" />
-          </div>
-        </div>
+      <div
+        class="text-center m-0"
+        (click)="taskEntered()"
+        [ngClass]="{ 'add-icn2': addNewTaskone }"
+      >
+        <img src="../assets/images/add_icn.png" alt="add" />
+      </div>
     </div>
+
     <div *ngIf="!addNewTaskone">
-    <div class="add-icn text-center m-0" (click)="onAdd()">
-      <img src="../assets/images/add_icn.png" alt="add" />
+      <div class="add-icn text-center m-0" (click)="onAdd()">
+        <img src="../assets/images/add_icn.png" alt="add" />
+      </div>
     </div>
-    </div>
-
-    
   </div>
-
-
 
   <router-outlet></router-outlet>
 </div>
