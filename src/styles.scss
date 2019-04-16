@@ -1,1 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  font-family: "Montserrat", sans-serif;
+  background: #fafafc;
+}
+.top-heading img {
+  width: 60px;
+  border-radius: 50%;
+}
+.bg-clr {
+  background: #fafafc;
+}
+.user-name {
+  font-size: 24px;
+  font-weight: 500;
+  color: #222121;
+}
+p {
+  margin: 0 !important;
+  color: #9b9b9b;
+}
+.task-clock img {
+  width: 22px;
+}
+.task-panel {
+  background: #ffffff;
+  box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.14);
+}
+.add-icn,
+.add-icn2 {
+  position: fixed;
+  bottom: 0%;
+  left: 0;
+  right: 0;
+}
+.add-icn {
+  img {
+    background: #1e7bf5;
+    padding: 20px;
+    border-radius: 50%;
+  }
+}
+.add-icn2 {
+  background: #1e7bf5;
+  transition: all 1s ease-out;
+  img {
+    padding: 20px;
+  }
+}
+textarea {
+  resize: none !important;
+}
