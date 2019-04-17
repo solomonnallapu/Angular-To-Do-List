@@ -1,65 +1,63 @@
-<div class="bg-clr">
+<div>
   <div class="container">
+
     <!-- Top Heading -->
-    <!-- <div class="row top-heading mt-4">
-    <div class="col-9">
-    <h3>Hello Solomon </h3>
-    <p>You have 3 tasks</p>
-    </div>
-    <div class="col-3">
-      <img src="../assets/images/profile_pic.png" alt="">
-    </div>
-  </div> -->
-    <div class="d-flex top-heading justify-content-between my-4">
-      <div>
-        <p class="user-name">Hello Solomon Nallapu</p>
-        <p>You have 3 tasks</p>
+    <div *ngIf="!addNewTaskone">
+      <div class="d-flex top-heading justify-content-between my-4">
+        <div>
+          <p class="user-name">Hello Floyd Mullins</p>
+          <p class="poppins-font">You have 3 tasks</p>
+        </div>
+        <div class="">
+          <img src="../assets/images/profile_pic.png" alt="" />
+        </div>
       </div>
-      <div class="">
-        <img src="../assets/images/profile_pic.png" alt="" />
-      </div>
-    </div>
 
-    <!-- tasks -->
+      <!-- Tasks -->
 
-    <div
-      class="d-flex justify-content-between p-3 mb-3 task-panel rounded"
-      *ngFor="let task of allTasks; let i = index"
-    >
-      <div>
-        <h6>{{ task }}</h6>
-        <p>Due on Fri Aug 8</p>
-      </div>
-      <div class="task-clock">
-        <img src="../assets/images/task_clock.png" alt="icn" />
+      <div class="d-flex justify-content-between p-3 mb-3 task-panel rounded"
+        *ngFor="let task of allTasks; let i = index">
+        <div>
+          <h6>{{ task }}</h6>
+          <p class="poppins-font">Due on Fri Aug 8</p>
+        </div>
+        <div class="task-clock">
+          <img src="../assets/images/task_clock.png" alt="icn" />
+        </div>
       </div>
     </div>
-
-    <div class="add-task" *ngIf="addNewTaskone">
-      <div class="close-btn">
-        <button type="button" class="close float-left" (click)="Close()">
-          &times;
+    <!-- Add Task Textarea -->
+    <form (ngSubmit)="f.form.valid && submitTask()" #f="ngForm">
+      <div class="add-task" *ngIf="addNewTaskone">
+        <div class="close-btn"> 
+          <button type="button" class="close float-left " (click)="onClose()">&times;
+          </button>
+        </div>
+        <div class="form-group">
+          <textarea name="Task" class="form-control" rows="5" id="comment" [(ngModel)]="newTask" #myTask="ngModel"
+            class="text-area" placeholder="What would you like to add ?" autofocus required>
+                    </textarea>
+          <div class="input-group-append browse_btn">
+            <img src="../assets/images/browse.png" alt="" class="">
+          </div>
+          <div class="input-group-append calendar_btn">
+            <img src="../assets/images/calendar.png" alt="" class="">
+          </div>
+          <div *ngIf="myTask.invalid && (myTask.dirty || myTask.touched)" class="text-danger mt-1">
+            <div *ngIf="myTask.errors.required">
+              Please add any task
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Submit Task Button -->
+      <div *ngIf="addNewTaskone">
+        <button (click)="submitTask()" [ngClass]="{ 'add-icn2': addNewTaskone }"
+          [disabled]="f.form.pristine || f.form.invalid">
+          <img src="../assets/images/add_icn.png" alt="add" />
         </button>
       </div>
-      <div>
-        <textarea b  
-          name="addTask"
-          class="form-control"
-          rows="5"
-          id="comment"
-          [(ngModel)]="newTask"
-        ></textarea>
-      </div>
-    </div>
-    <div *ngIf="addNewTaskone">
-      <div
-        class="text-center m-0"
-        (click)="taskEntered()"
-        [ngClass]="{ 'add-icn2': addNewTaskone }"
-      >
-        <img src="../assets/images/add_icn.png" alt="add" />
-      </div>
-    </div>
+    </form>
 
     <div *ngIf="!addNewTaskone">
       <div class="add-icn text-center m-0" (click)="onAdd()">
