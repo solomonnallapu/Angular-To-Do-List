@@ -9,11 +9,14 @@ export class AppComponent {
   title = 'To-do-List';
   allTasks: any = [];
   newTask: any;
+  date = new Date(Date.now());
   addNewTaskone = false;
   addNewTask = true;
   todos: any = [];
 
-  constructor() { }
+  constructor() {
+    setTimeout(()=>this.addNewTaskone=true, 10000);
+   }
 
   onAdd() {
     this.addNewTaskone = !this.addNewTaskone;
@@ -30,4 +33,5 @@ export class AppComponent {
   onClose(){
     this.addNewTaskone = false;
   }
+  
 }

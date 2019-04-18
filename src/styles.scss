@@ -16,6 +16,7 @@ p {
   color: #9C9C9E;
   font-size: 14px;
   font-weight: 400 !important;
+  font-family: "Poppins", sans-serif;
 }
 
 .user-name {
@@ -94,3 +95,32 @@ textarea:focus {
   font-family: "Montserrat", sans-serif;
   color: #DDDDDD !important;
 }
+
+// Close Button Starting Animation
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: rotate(-180deg);
+    opacity: 0.3;
+  }
+  75% {
+    transform: rotate(-270deg);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: rotate(-360deg);
+    opacity: 1;
+  }
+}
+.closeClicked {
+  animation-delay: 200ms;
+  animation-timing-function: ease-in;
+  animation-name: rotate;
+  animation-duration: 1s;
+}
+
