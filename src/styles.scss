@@ -35,37 +35,6 @@ p {
   box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.14);
 }
 
-.add-icn,
-.add-icn2 {
-  position: fixed;
-  bottom: 1%;
-  left: 0;
-  right: 0;
-}
-
-.add-icn {
-  img {
-    background: #1e7bf5;
-    padding: 20px;
-    border-radius: 50%;
-  }
-}
-
-.add-icn2 {
-  background: #1e7bf5;
-  border: none;
-  display: block;
-  width: 100%;
-  transition: all 1s ease-out;
-  -webkit-transition: all 1s ease-out;
-  -moz-transition: all 1s ease-out;
-  bottom: 0 !important;
-
-  img {
-    padding: 20px;
-  }
-}
-
 textarea {
   resize: none !important;
   border: none !important;
@@ -96,31 +65,85 @@ textarea:focus {
   color: #DDDDDD !important;
 }
 
-// Close Button Starting Animation
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-    opacity: 0.2;
-  }
-
-  50% {
-    transform: rotate(-180deg);
-    opacity: 0.3;
-  }
-  75% {
-    transform: rotate(-270deg);
-    opacity: 0.6;
-  }
-
-  100% {
-    transform: rotate(-360deg);
-    opacity: 1;
-  }
-}
 .closeClicked {
-  animation-delay: 200ms;
-  animation-timing-function: ease-in;
-  animation-name: rotate;
-  animation-duration: 1s;
+  // animation-timing-function: ease-out;
+  animation-name: rotateOut;
+  animation-duration: 400ms;
 }
 
+.add-icn,
+.add-icn2 {
+  position: fixed;
+  bottom: 1%;
+  left: 0;
+  right: 0;
+}
+
+.add-icn {
+  img {
+    background: #1e7bf5;
+    padding: 20px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 7px #6f6f6f;
+  }
+}
+
+.add-icn2 {
+  background: #1e7bf5;
+  border: none;
+  display: block;
+  width: 100%;
+  transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  -moz-transition: all 1s ease-out;
+  bottom: 0 !important;
+
+  img {
+    padding: 20px;
+  }
+}
+
+// Dragable
+.delete_task {
+  position: fixed;
+  bottom: 1%;
+  background: #FB4F62;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, 0);
+
+  img {
+    padding: 20px;
+  }
+}
+
+.drop-over-active {
+  background-color: #FB4F62;
+  padding: 10px;
+  z-index: 9999 !important;
+}
+
+// Hide and Show Add and Delete Buttons
+.opacity_0 {
+  opacity: 0;
+}
+
+.opacity_1 {
+  opacity: 1;
+}
+
+// Resize the Box on Drag
+.scaleDown {
+  transform: scale(0.8);
+  padding: 0.5rem !important;
+
+  h6,
+  p {
+    font-size: 12px !important;
+  }
+
+  img {
+    width: 15px;
+  }
+
+}

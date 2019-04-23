@@ -6,23 +6,32 @@
       <div class="d-flex top-heading justify-content-between my-4">
         <div>
           <p class="user-name">Hello Floyd Mullins</p>
-          <p>You have 3 tasks</p>
+          <p>You have {{allTasks.length}} task(s)</p>
         </div>
         <div>
           <img src="../assets/images/profile_pic.png" alt="" />
         </div>
       </div>
 
+
+
+
+
+
       <!-------------------------- Tasks ----------------------------------------->
       <p *ngIf="allTasks.length <= 0" class="no_task text-center"> No Task Entered</p>
-      <div class="d-flex justify-content-between p-3 mb-3 task-panel rounded"
-        *ngFor="let task of allTasks; let i = index">
-        <div>
-          <h6>{{ task }}</h6>
-          <p>Due on {{date | date: 'dd/MM/yyyy'}}</p>
-        </div>
-        <div class="task-clock">
-          <img src="../assets/images/task_clock.png" alt="icn" />
+
+      <div *ngFor="let task of allTasks; let i = index" (click)="onSelect(task, i)">
+
+        <div class="d-flex justify-content-between p-3 mb-3 task-panel rounded" mwlDraggable dropData="i"
+          dragActiveClass="drag-active" (dragStart)='dragStart()' (dragEnd)="dragEnd($event, i)" draggable="true"  [ngClass]="{'scaleDown': onStart==true}">
+          <div>
+            <h6>{{ task }}</h6>
+            <p>Due on {{date | date: 'dd/MM/yyyy'}}</p>
+          </div>
+          <div class="task-clock">
+            <img src="../assets/images/task_clock.png" alt="icn" />
+          </div>
         </div>
       </div>
     </div>
@@ -30,8 +39,9 @@
     <form (ngSubmit)="f.form.valid && submitTask()" #f="ngForm">
       <div class="add-task animated fadeInUp" *ngIf="addNewTaskone">
         <div class="close-btn ">
-          <button type="button" class="close float-left animated rotateIn" (click)="onClose()">&times;
-          </button>
+          <div class="close float-left animated rotateIn" (click)="onClose()"
+            [ngClass]="{'closeClicked': rotateAnimi == true}">&times;
+          </div>
         </div>
         <div class="form-group">
           <textarea name="Task" class="form-control" rows="5" id="comment" [(ngModel)]="newTask" #myTask="ngModel"
@@ -52,15 +62,24 @@
       </div>
       <!-- Submit Task Button -->
       <div *ngIf="addNewTaskone">
-        <button (click)="submitTask()" [ngClass]="{ 'add-icn2': addNewTaskone }"
+        <button (click)="submitTask(newTask)" [ngClass]="{ 'add-icn2': addNewTaskone }"
           [disabled]="f.form.pristine || f.form.invalid">
           <img src="../assets/images/add_icn.png" alt="add" />
         </button>
       </div>
     </form>
-<!-- Add New Task Button -->
+    <!-- delete btn -->
     <div *ngIf="!addNewTaskone">
-      <div class="add-icn text-center m-0" (click)="onAdd()">
+      <div class="delete_task text-center m-0" mwlDroppable (drop)="onDrop($event)" dragOverClass="drop-over-active"
+        [ngClass]="{'opacity_0': onStart==false,'opacity_1': onStart==true}">
+        <img src="../assets/images/delete_white.png" alt="delete">
+      </div>
+    </div>
+
+    <!-- Add New Task Button  -->
+    <div *ngIf="!addNewTaskone">
+      <div class="add-icn text-center m-0" (click)="onAdd()"
+        [ngClass]="{'opacity_0': onStart==true,'opacity_1': onStart==false}">
         <img src="../assets/images/add_icn.png" alt="add" />
       </div>
     </div>
