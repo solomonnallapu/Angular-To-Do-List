@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ToDoList
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
@@ -28,3 +29,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 "# Todo-List" 
 "# Angular-To-Do-List" 
 "# Angular-To-Do-List" 
+=======
+# Angualr-To-Do-List
+>>>>>>> 0ff4dd527263ab674b666ea967d4a5ec3c34110d
