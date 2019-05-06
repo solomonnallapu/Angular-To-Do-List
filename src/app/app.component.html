@@ -24,7 +24,7 @@
       <div *ngFor="let task of allTasks; let i = index" (click)="onSelect(task, i)">
 
         <div class="d-flex justify-content-between p-3 mb-3 task-panel rounded" mwlDraggable dropData="i"
-          dragActiveClass="drag-active" (dragStart)='dragStart()' (dragEnd)="dragEnd($event, i)" draggable="true"  [ngClass]="{'scaleDown': onStart==true}">
+          dragActiveClass="drag-active" (dragStart)='dragStart(i)' (dragEnd)="dragEnd($event, i)" draggable="true"  >
           <div>
             <h6>{{ task }}</h6>
             <p>Due on {{date | date: 'dd/MM/yyyy'}}</p>
@@ -38,15 +38,17 @@
     <!-- Add Task Textarea -->
     <form (ngSubmit)="f.form.valid && submitTask()" #f="ngForm">
       <div class="add-task animated fadeInUp" *ngIf="addNewTaskone">
-        <div class="close-btn ">
+        <!-- Close Button --> 
+        <div class="close-btn">
           <div class="close float-left animated rotateIn" (click)="onClose()"
             [ngClass]="{'closeClicked': rotateAnimi == true}">&times;
           </div>
         </div>
         <div class="form-group">
+          <!--Textarea -->
           <textarea name="Task" class="form-control" rows="5" id="comment" [(ngModel)]="newTask" #myTask="ngModel"
             class="text-area" placeholder="What would you like to add ?" autofocus required>
-                    </textarea>
+          </textarea>
           <div class="input-group-append browse_btn">
             <img src="../assets/images/browse.png" alt="browse">
           </div>
@@ -54,9 +56,9 @@
             <img src="../assets/images/calendar.png" alt="calendar">
           </div>
           <div *ngIf="myTask.invalid && (myTask.dirty || myTask.touched)" class="text-danger mt-1">
-            <div *ngIf="myTask.errors.required">
+            <!-- <div *ngIf="myTask.errors.required">
               Please add any task
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

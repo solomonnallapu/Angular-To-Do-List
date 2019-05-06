@@ -11,9 +11,10 @@ export class AppComponent {
   allTasks: any = [];
   newTask: any;
   newTaskSelect=true;
+  selectedTask=false;
   date = new Date(Date.now());
   addNewTaskone = false;
-  addNewTask = true;
+  // addNewTask = true;
   rotateAnimi=false;
   todos: any = [];
   selectIndex:any;
@@ -52,10 +53,13 @@ export class AppComponent {
     else if(this.newTaskSelect){
       this.allTasks.push(this.newTask);
     }
-    this.addNewTaskone = false;
-    console.log('Enter new task', this.addNewTaskone);
-    console.log('Task Submit is',newTask);
     this.newTask = '';
+ 
+    this.rotateAnimi = true;
+    setTimeout(() => {
+      this.addNewTaskone = false;
+      this.rotateAnimi = false;
+    }, 300);
   }
  
   onClose() {
@@ -68,9 +72,11 @@ export class AppComponent {
   }
 
   // Drag Start
-  dragStart(){
+  dragStart(i){
     this.onStart=!this.onStart;
+    this.indexValue=i;
     console.log('Drag started',this.onStart);
+       
   }
 // DRAG and Release
   dragEnd(i){
